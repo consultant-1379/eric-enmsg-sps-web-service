@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applications xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CertificateRequest.xsd">
+    <application>
+        <certificates>
+            <certificate>
+                <tbscertificate>
+                    <subject>
+                        <entityname>##hostname##_httpd</entityname>
+                        <distinguishname>CN=FQDN</distinguishname>
+                    </subject>
+                </tbscertificate>
+                <endentityprofilename>ENM_System_UI_EP</endentityprofilename>
+                <keypair>
+                    <keypairsize>2048</keypairsize>
+                    <keypairalgorithm>RSA</keypairalgorithm>
+                </keypair>
+                <keystore>
+                    <base64keystore>
+                        <storealias>ApacheCert</storealias>
+                        <keyfilelocation>/etc/pki/tls/private/ApacheCert.key</keyfilelocation>
+                        <certificatefilelocation>/etc/pki/tls/certs/ApacheCert.crt</certificatefilelocation>
+                    </base64keystore>
+                </keystore>
+                <!-- <connectormanaged>httpsConnector</connectormanaged>-->
+            </certificate>
+        </certificates>
+        <crlupdatemode>CrlNotManaged</crlupdatemode>
+    </application>
+    <user>
+        <username>root</username>
+        <usergroup>root</usergroup>
+    </user>
+</applications>

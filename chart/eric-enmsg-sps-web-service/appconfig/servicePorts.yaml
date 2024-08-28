@@ -1,0 +1,9 @@
+- name: http
+  port: 80
+  targetPort: {{.Values.spec.portHTTP}}
+- name: https
+  port: 443
+  targetPort: {{.Values.spec.portHTTPS}}
+- name: metrics
+  port: 9600
+  targetPort: 9600

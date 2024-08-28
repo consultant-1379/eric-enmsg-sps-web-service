@@ -1,0 +1,16 @@
+{{- if .Values.ingress_jboss_web_context.enabled -}}
+{{- template "eric-enm-common-helmchart-library.ingress" (list . "eric-enmsg.ingress_jboss_web_context") -}}
+{{- end }}
+{{- define "eric-enmsg.ingress_jboss_web_context" -}}
+metadata:
+  annotations:
+{{- with .Values.ingress_jboss_web_context.annotations }}
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+  rules:
+  - host: {{ template "eric-enm-common-helmchart-library.enmHost" . }}
+    http:
+      paths:
+{{ tpl (.Files.Get "appconfig/ingress_jboss_web_context.yaml") . | indent 6 }}
+{{- end -}}

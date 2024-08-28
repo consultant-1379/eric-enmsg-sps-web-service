@@ -1,0 +1,21 @@
+- name: gp
+  configMap:
+    name: gpsps
+- name: data
+  persistentVolumeClaim:
+    claimName: data
+- name: hcdumps
+  persistentVolumeClaim:
+    claimName: hcdumps
+- name: custom
+  persistentVolumeClaim:
+    claimName: custom
+- name: dlms
+  persistentVolumeClaim:
+    claimName: dlms
+- name: configmgt
+  persistentVolumeClaim:
+    claimName: configmgt
+- name: batch
+  persistentVolumeClaim:
+    claimName: batch

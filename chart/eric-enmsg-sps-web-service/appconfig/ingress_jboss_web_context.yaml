@@ -1,0 +1,231 @@
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /pki-manager
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /key-access-provider-service
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /pki-web-cli
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /credential-manager-service
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /pki-core
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /credential-manager-web-cli-handler
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /pkientitymanagement
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /locales/en-us/pkientitymanagement
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /help/en-us/pkientitymanagement
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /pkiprofilemanagement
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /locales/en-us/pkiprofilemanagement
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /help/en-us/pkiprofilemanagement
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /pkicaentity
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /locales/en-us/pkicaentity
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /help/en-us/pkicaentity
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /pkicertificateprofile
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /locales/en-us/pkicertificateprofile
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /help/en-us/pkicertificateprofile
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /pkicertificates
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /locales/en-us/pkicertificates
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /help/en-us/pkicertificates
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /pkiendentity
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /locales/en-us/pkiendentity
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /help/en-us/pkiendentity
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /pkientityprofile
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /locales/en-us/pkientityprofile
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /help/en-us/pkientityprofile
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /pkitrustprofile
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /locales/en-us/pkitrustprofile
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /help/en-us/pkitrustprofile
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /pkiwidgetslibrary
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /locales/en-us/pkiwidgetslibrary
+  pathType: ImplementationSpecific
+- backend:
+    service:
+      name: websps
+      port:
+        number: 443
+  path: /help/en-us/pkiwidgetslibrary
+  pathType: ImplementationSpecific

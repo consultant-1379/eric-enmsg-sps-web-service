@@ -1,0 +1,14 @@
+- name: gp
+  mountPath: /gp
+- name: data
+  mountPath: /ericsson/tor/data
+- name: hcdumps
+  mountPath: /ericsson/enm/dumps
+- name: configmgt
+  mountPath: /ericsson/config_mgt
+- name: batch
+  mountPath: /ericsson/batch
+- name: tls-secret-1
+  mountPath: {{ .Values.service.tlsMountPath }}/tls1
+- name: tls-secret-2
+  mountPath: {{ .Values.service.tlsMountPath }}/tls2

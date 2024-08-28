@@ -1,0 +1,231 @@
+## eric-enmsg-sps-web-service image version
+global:
+  registry:
+    url:
+    pullSecret:
+  ingress:
+    enmHost:
+  vips: {}
+  enmProperties:
+    COM_INF_LDAP_ROOT_SUFFIX:
+    COM_INF_LDAP_ADMIN_ACCESS:
+    COM_INF_LDAP_ADMIN_CN:
+    COM_INF_LDAP_PORT:
+    LDAP_ADMIN_CN:
+    LDAP_ADMIN_PASSWORD:
+    certificatesRevListDistributionPointServiceDnsEnable:
+    certificatesRevListDistributionPointServiceIpv4Enable:
+    certificatesRevListDistributionPointServiceIpv6Enable:
+    haproxysb_ipv6:
+    publicKeyInfraRegAutorithyPublicServerName:
+    postgresql01_admin_password:
+    postgres_service:
+  timezone:
+productInfo:
+  number: CXC 174 1994
+  rstate: R8A
+securityPolicy:
+  rolename: websps
+# Number of replicas(pods) to deploy
+replicas-eric-enmsg-sps-web-service: 1
+images:
+  eric-enmsg-sps-web-service:
+    name: eric-enmsg-sps-web-service
+    tag: VERSION
+  eric-enm-monitoring:
+    enabled: true
+    name: eric-enm-monitoring-eap7
+    tag: 1.64.0-33
+  waitForCertificatesContainer:
+    enabled: true
+    name: enm-wait-for-certificates-container
+    tag: 1.52.0-33
+imageCredentials:
+  repoPath: proj-enm
+  pullPolicy: Always
+  registry:
+    url:
+    pullSecret:
+## Configure the service
+service:
+  name: websps
+  sgname: websps
+  sgUID: 1096
+  annotations: {}
+  labels:
+  xmlMountPath: "/ericsson/credm/certReqMount"
+  tlsMountPath: "/ericsson/credm/tlsMount"
+ingress:
+  enabled: false
+## sps is used only by internal enm service groups. No external traffic is expected.
+ingress_jboss_web_context:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+## Configure resource requests and limits
+resources:
+  requests:
+    enabled: true
+    memory: 400Mi
+  limits:
+    enabled: true
+    memory: 1000Mi
+httpd:
+  enabled: false
+  requests:
+    memory:
+    cpu:
+  limits:
+    memory:
+    cpu:
+monitoring:
+  enabled: false
+  requests:
+    memory:
+    cpu:
+  limits:
+    memory:
+    cpu:
+privileged:
+  enabled: false
+probes:
+  container:
+    startupProbe:
+      enabled: true
+      command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+      arguments: --exec_agents
+      initialDelaySeconds: 10
+      timeoutSeconds: 30
+      periodSeconds: 30
+      failureThreshold: 6
+    livenessProbe:
+      enabled: true
+      command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+      arguments: --exec_agents
+      initialDelaySeconds: 30
+      timeoutSeconds: 30
+      periodSeconds: 30
+      failureThreshold: 2
+    readinessProbe:
+      enabled: true
+      command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+      arguments: --exec_agents
+      initialDelaySeconds: 10
+      periodSeconds: 30
+      timeoutSeconds: 30
+      failureThreshold: 2
+  monitoringcontainer:
+    startupProbe:
+      enabled: true
+      command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+      arguments: --exec_agents
+      initialDelaySeconds: 10
+      timeoutSeconds: 30
+      periodSeconds: 30
+      failureThreshold: 6
+    livenessProbe:
+      enabled: true
+      command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+      arguments: --exec_agents
+      initialDelaySeconds: 30
+      timeoutSeconds: 30
+      periodSeconds: 30
+      failureThreshold: 2
+startupProbe:
+  enabled: true
+  command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+  arguments: --exec_agents
+  initialDelaySeconds: 10
+  timeoutSeconds: 30
+  periodSeconds: 30
+  failureThreshold: 6
+# LivenessProbe Health Check configuration.
+livenessProbe:
+  enabled: true
+  command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+  arguments: --exec_agents
+  initialDelaySeconds: 30
+  timeoutSeconds: 30
+  periodSeconds: 30
+  failureThreshold: 2
+# ReadinessProbe Health Check configuration.
+readinessProbe:
+  enabled: true
+  command: /ericsson/enm_healthcheck/bin/enm_healthcheck.py
+  arguments: --exec_agents
+  initialDelaySeconds: 10
+  periodSeconds: 30
+  timeoutSeconds: 30
+  failureThreshold: 2
+# lifecycle handler configuration from appconfig/lifecycle_handler.txt
+lifecycle:
+  handler:
+    enabled: true
+# Extra Annotations to be added to pod
+podAnnotations: {}
+## Tolerations for pod assignment
+tolerations: []
+## Affinity for pod assignment
+affinity: requiredDuringSchedulingIgnoredDuringExecution
+# Constrain which nodes your pod is eligible to be scheduled on
+nodeAffinity: {}
+priorityClassName: ""
+## Node selector
+nodeSelector: {}
+updateStrategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 1
+    maxSurge: 0
+## Pod Disruption Budget is an indicator of the number of disruptions that can be tolerated at a given time.
+podDisruptionBudget:
+  maxUnavailable: 1
+credmController:
+  name: eric-enm-credm-controller
+  port: 5001
+jobs:
+  jobAction: certrequest
+  certRequest:
+    imageName: enm-certrequestjob-container
+    pullPolicy: Always
+    tag: 1.52.0-33
+    resources:
+      requests:
+        enabled: true
+        cpu: 500m
+        memory: 512Mi
+      limits:
+        enabled: true
+        cpu: 1000m
+        memory: 512Mi
+securityContext:
+  supplementalGroups:
+  - 0
+  - 206
+  websps:
+    allowPrivilegeEscalation: false
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsNonRoot: true
+    capabilities:
+      drop:
+      - ALL
+  monitoring:
+    allowPrivilegeEscalation: false
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsNonRoot: true
+    capabilities:
+      drop:
+      - ALL
+  waitForCertificatesContainer:
+    allowPrivilegeEscalation: false
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsNonRoot: true
+    capabilities:
+      drop:
+      - ALL
+spec:
+  portHTTP: 8084
+  portHTTPS: 8444

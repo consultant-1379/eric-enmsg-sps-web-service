@@ -1,0 +1,9 @@
+DEP=true
+NAME=eric-enmsg-sps-web-service
+SVC=websps
+WAIT=true
+WAIT_LIST=sps
+REQUESTS=true
+REQUESTS_LIST=400Mi
+LIMITS=true
+LIMITS_LIST=1000Mi
